@@ -64,6 +64,9 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.Medi
             }
         });
 
+        if (holder.mMedicinceView.getQuantity().equals(""))
+            holder.mMedicinceView.setQuantityFocus();
+
         if (i == (getItemCount() - 1))
             holder.mMedicinceView.setNameFocus();
 
@@ -95,8 +98,6 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.Medi
 
 interface MedicineItemListener {
     void onMedicineNameClickListener(int pos);
-
     void onDeleteItem(int pos);
-
     void onMedicineQuantityChanged(int pos, String quantity);
 }
