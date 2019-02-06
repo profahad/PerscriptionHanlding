@@ -1,11 +1,10 @@
-package com.example.prescriptionhandling;
+package com.appslandz.prescriptionview;
 
 import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -13,7 +12,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class PerscriptionItemView extends LinearLayout {
+public class PerscriptionView extends LinearLayout {
 
     private Context context;
 
@@ -22,7 +21,7 @@ public class PerscriptionItemView extends LinearLayout {
     private EditText edittextQuantity;
     private ImageButton mDeleteButton;
 
-    public PerscriptionItemView(Context context, AttributeSet attrs) {
+    public PerscriptionView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         inflate(context, R.layout.perscription_item_view, this);
@@ -121,9 +120,4 @@ public class PerscriptionItemView extends LinearLayout {
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
-}
-
-interface OnTextChangedListener {
-    public void OnTextChanged(String quantity);
-    public void afterTextChanged(String quantity);
 }

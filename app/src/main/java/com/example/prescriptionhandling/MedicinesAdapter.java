@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.appslandz.prescriptionview.OnTextChangedListener;
+import com.appslandz.prescriptionview.PerscriptionView;
+
 import java.util.List;
 
 public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.MedicineVH> {
@@ -86,7 +89,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.Medi
     class MedicineVH extends RecyclerView.ViewHolder {
 
         View view;
-        PerscriptionItemView mMedicinceView;
+        PerscriptionView mMedicinceView;
 
         MedicineVH(View itemView) {
             super(itemView);
