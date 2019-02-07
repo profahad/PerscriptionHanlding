@@ -1,4 +1,7 @@
-package com.example.prescriptionhandling;
+package com.example.prescriptionhandling.perscriptiondialog.medicines;
+
+
+import com.example.prescriptionhandling.medicinesdata.MedData;
 
 public class Medicine {
     private long id;
@@ -49,5 +52,13 @@ public class Medicine {
 
     public void setMedData(MedData medData) {
         this.medData = medData;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Medicine) {
+            return ((Medicine) obj).getName().equals(getName());
+        }
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.prescriptionhandling;
+package com.example.prescriptionhandling.labsdata;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,41 +10,43 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import com.example.prescriptionhandling.medicinesdata.MedData;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MedicineDataAdapter extends RecyclerView.Adapter<MedicineDataAdapter.MedicineItemView>  implements Filterable {
+public class LabsDataAdapter extends RecyclerView.Adapter<LabsDataAdapter.LabItemView>  implements Filterable {
 
     private Context context;
-    private List<MedData> list;
-    private List<MedData> originalList;
-    private OnMedicineSelectListener listener;
+    private List<LabData> list;
+    private List<LabData> originalList;
+    private OnLabTestSelectListener listener;
 
 
-    public MedicineDataAdapter(Context context, List<MedData> list) {
+    public LabsDataAdapter(Context context, List<LabData> list) {
         this.context = context;
         this.originalList = list;
         this.list = list;
     }
 
-    public void setOnMedicineSelectListener(OnMedicineSelectListener listener) {
+    public void setOnLabTestSelectListener(OnLabTestSelectListener listener) {
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public MedicineItemView onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new MedicineItemView(LayoutInflater.from(viewGroup.getContext()).inflate(android.R.layout.simple_list_item_1, viewGroup, false));
+    public LabItemView onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        return new LabItemView(LayoutInflater.from(viewGroup.getContext()).inflate(android.R.layout.simple_list_item_1, viewGroup, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MedicineItemView holder, final int i) {
+    public void onBindViewHolder(@NonNull LabItemView holder, final int i) {
         holder.textView.setText(this.list.get(i).getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null)
-                    listener.onMedicineSelected(list.get(i));
+                    listener.onLabTestSelected(list.get(i));
             }
         });
     }
@@ -54,11 +56,11 @@ public class MedicineDataAdapter extends RecyclerView.Adapter<MedicineDataAdapte
         return list.size();
     }
 
-    class MedicineItemView extends RecyclerView.ViewHolder {
+    class LabItemView extends RecyclerView.ViewHolder {
 
         private TextView textView;
 
-        MedicineItemView(@NonNull View itemView) {
+        LabItemView(@NonNull View itemView) {
             super(itemView);
             this.textView = itemView.findViewById(android.R.id.text1);
         }
@@ -71,13 +73,13 @@ public class MedicineDataAdapter extends RecyclerView.Adapter<MedicineDataAdapte
             @SuppressWarnings("unchecked")
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                list = (List<MedData>) results.values;
+                list = (List<LabData>) results.values;
                 notifyDataSetChanged();
             }
 
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-                List<MedData> filteredResults = null;
+                List<LabData> filteredResults = null;
                 if (constraint.length() == 0) {
                     filteredResults = originalList;
                 } else {
@@ -92,10 +94,10 @@ public class MedicineDataAdapter extends RecyclerView.Adapter<MedicineDataAdapte
         };
     }
 
-    private List<MedData> getFilteredResults(String constraint) {
-        List<MedData> results = new ArrayList<>();
+    private List<LabData> getFilteredResults(String constraint) {
+        List<LabData> results = new ArrayList<>();
 
-        for (MedData item : originalList) {
+        for (LabData item : originalList) {
             if (item.getName().toLowerCase().contains(constraint)) {
                 results.add(item);
             }
@@ -103,6 +105,7 @@ public class MedicineDataAdapter extends RecyclerView.Adapter<MedicineDataAdapte
         return results;
     }
 }
-interface OnMedicineSelectListener {
-    void onMedicineSelected(MedData data);
+
+interface OnLabTestSelectListener {
+    void onLabTestSelected(LabData data);
 }

@@ -32,11 +32,11 @@
             android:layout_weight="1"
             android:background="@drawable/bottom_border_line"
             android:gravity="center|left"
-            android:paddingLeft="4dp"
             android:hint="Select Medicine"
+            android:paddingStart="4dp"
+            android:paddingLeft="4dp"
             android:textColor="@color/colorBlack"
-            android:textSize="12sp"
-            android:paddingStart="4dp" />
+            android:textSize="12sp" />
 
         <EditText
             android:id="@+id/textViewQuantity"
@@ -45,10 +45,11 @@
             android:layout_marginStart="12dp"
             android:layout_marginLeft="12dp"
             android:background="@drawable/bottom_border_line"
-            android:inputType="textShortMessage"
-            android:maxLines="1"
             android:gravity="center|left"
             android:hint="Dosage"
+            android:inputType="textShortMessage"
+            android:maxLines="1"
+            android:imeOptions="actionDone"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:textColor="@color/colorBlack"

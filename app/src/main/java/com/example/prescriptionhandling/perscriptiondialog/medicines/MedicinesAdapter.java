@@ -1,4 +1,4 @@
-package com.example.prescriptionhandling;
+package com.example.prescriptionhandling.perscriptiondialog.medicines;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,18 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.appslandz.prescriptionview.OnTextChangedListener;
-import com.appslandz.prescriptionview.PerscriptionView;
+import com.appslandz.prescriptionview.MedicineView;
+import com.example.prescriptionhandling.R;
 
 import java.util.List;
 
 public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.MedicineVH> {
 
-    private Context context;
     private List<Medicine> list;
     private MedicineItemListener listener;
 
     public MedicinesAdapter(@NonNull Context context, List<Medicine> list) {
-        this.context = context;
         this.list = list;
     }
 
@@ -30,7 +29,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.Medi
     @NonNull
     @Override
     public MedicineVH onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new MedicineVH(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.medicine_item_view, viewGroup, false));
+        return new MedicineVH(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.medicine_row_view, viewGroup, false));
     }
 
     @Override
@@ -89,7 +88,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.Medi
     class MedicineVH extends RecyclerView.ViewHolder {
 
         View view;
-        PerscriptionView mMedicinceView;
+        MedicineView mMedicinceView;
 
         MedicineVH(View itemView) {
             super(itemView);
@@ -99,8 +98,3 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.Medi
     }
 }
 
-interface MedicineItemListener {
-    void onMedicineNameClickListener(int pos);
-    void onDeleteItem(int pos);
-    void onMedicineQuantityChanged(int pos, String quantity);
-}

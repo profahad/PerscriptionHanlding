@@ -1,9 +1,9 @@
-package com.example.prescriptionhandling;
+package com.example.prescriptionhandling.medicinesdata;
 
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-class MedData implements Serializable {
+public class MedData implements Serializable {
     private long id;
     private String name;
 

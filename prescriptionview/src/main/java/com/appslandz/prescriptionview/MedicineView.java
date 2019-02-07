@@ -5,6 +5,7 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -12,7 +13,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class PerscriptionView extends LinearLayout {
+import java.security.Key;
+
+import static com.appslandz.prescriptionview.Utils.hideKeyboard;
+
+public class MedicineView extends LinearLayout {
 
     private Context context;
 
@@ -21,10 +26,10 @@ public class PerscriptionView extends LinearLayout {
     private EditText edittextQuantity;
     private ImageButton mDeleteButton;
 
-    public PerscriptionView(Context context, AttributeSet attrs) {
+    public MedicineView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-        inflate(context, R.layout.perscription_item_view, this);
+        inflate(context, R.layout.medicine_view, this);
         textViewId = findViewById(R.id.textViewId);
         textViewName = findViewById(R.id.textViewName);
         edittextQuantity = findViewById(R.id.textViewQuantity);
@@ -108,16 +113,5 @@ public class PerscriptionView extends LinearLayout {
         this.textViewId.requestFocus();
         InputMethodManager imm = (InputMethodManager) context.getSystemService(context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
-    }
-
-    public void hideKeyboard(Context context) {
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
-        View view = ((Activity) context).getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(context);
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
