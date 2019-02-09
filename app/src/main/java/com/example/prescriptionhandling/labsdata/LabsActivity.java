@@ -81,7 +81,7 @@ public class LabsActivity extends AppCompatActivity {
 
     private void loadMedicines() {
         if (ValueHandler.getInstance().getLabDataList() != null) {
-            list = ValueHandler.getInstance().getLabDataList();
+            list.addAll(ValueHandler.getInstance().getLabDataList());
             adapter.notifyDataSetChanged();
             return;
         }
