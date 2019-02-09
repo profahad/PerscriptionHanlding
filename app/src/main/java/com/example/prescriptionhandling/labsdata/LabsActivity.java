@@ -129,7 +129,7 @@ public class LabsActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(s);
                 Log.i("FAHAD : Response", s);
                 if (jsonObject.getBoolean("success")) {
-                    JSONArray array = jsonObject.getJSONArray("testItems_all");
+                    JSONArray array = jsonObject.getJSONObject("data").getJSONArray("testItems_all");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject object = array.getJSONObject(i);
                         list.add(new LabData(object.getLong("id"), object.getString("name")));
