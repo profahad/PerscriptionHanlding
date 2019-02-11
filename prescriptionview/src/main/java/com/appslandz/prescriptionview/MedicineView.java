@@ -100,13 +100,13 @@ public class MedicineView extends LinearLayout {
     public void setQuantityFocus() {
         this.edittextQuantity.clearFocus();
         this.edittextQuantity.requestFocus();
-        hideKeyboard(context);
+        hideKeyboard(this.edittextQuantity);
     }
 
     public void setNameFocus() {
         this.edittextQuantity.clearFocus();
         this.textViewName.requestFocus();
-        hideKeyboard(context);
+        hideKeyboard(this.textViewName);
     }
 
     public void setIDFocus() {
